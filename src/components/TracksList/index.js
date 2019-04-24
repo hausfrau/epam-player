@@ -1,31 +1,26 @@
 import React from 'react';
 import './index.css';
-import setCurrentTrack from '../../setCurrentTrack';
-import CurrentTrack from '../../containers/CurrentTrack';
 
-const TracksListItem = function ({track}) {
-  // this.setCurrentTrack.bind(this);
+const TracksListItem = (props) => {
 
   function onTrackClick(_track) {
-    console.log(_track.name);
-    console.log(_track.duration);
-    console.log(_track.id);
-    setCurrentTrack.apply(CurrentTrack, { _track });
+    props.setCurrentTrackFromTrackItem(_track);
   }
 
   return (
-    <li className="tracks-list-item" onClick={onTrackClick.bind(null, track)}>
-      {track.name} {track.duration}
+    <li className="tracks-list-item" onClick={onTrackClick.bind(null, props.track)}>
+      {props.track.name} {props.track.duration}
     </li>
   )
 }
 
-const TracksList = props => {
+const TracksList = function (props) {
   return (
     <div>
       <ul className="tracks-list">
         {props.list.map(track => (
-          <TracksListItem track={track} key={track.id}/>
+          <TracksListItem track={track} key={track.id}
+                          setCurrentTrackFromTrackItem={(_track) => props.setCurrentTrackFromTrackList(_track)}/>
         ))}
       </ul>
     </div>
