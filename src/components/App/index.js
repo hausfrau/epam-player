@@ -34,15 +34,15 @@ class App extends Component {
         duration: "03.48"
       },
     ],
-    currentTrack: {
-      id: 0,
-      name: "",
-      duration: "00.00"
-    }
+    currentTrackId: 5
   }
 
-  setCurrentTrackFromTracks = (currentTrack) => {
-    this.setState({currentTrack});
+  setCurrentTrackFromTracks = (currentTrackId) => {
+    this.setState({currentTrackId});
+  }
+
+  findTrack = (id) => {
+    return this.state.tracks.find(track => track.id === id);
   }
 
   render() {
@@ -53,7 +53,7 @@ class App extends Component {
         </header>
         <ListHeader title="Playlist:"/>
         <Tracks tracks={this.state.tracks} setCurrentTrackFromTracks={this.setCurrentTrackFromTracks}/>
-        <CurrentTrack currentTrack={this.state.currentTrack}/>
+        <CurrentTrack currentTrack={this.findTrack(this.state.currentTrackId)}/>
       </div>
     );
   }

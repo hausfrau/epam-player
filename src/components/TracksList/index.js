@@ -4,7 +4,7 @@ import './index.css';
 const TracksListItem = (props) => {
 
   function onTrackClick(_track) {
-    props.setCurrentTrackFromTrackItem(_track);
+    props.setCurrentTrackFromTrackItem(_track.id);
   }
 
   return (
