@@ -41,19 +41,20 @@ class App extends Component {
     this.setState({currentTrackId});
   }
 
-  findTrack = (id) => {
-    return this.state.tracks.find(track => track.id === id);
-  }
+  findTrack = (id) => console.log(id) || this.state.tracks.find(track => track.id === id);
 
   render() {
+    const  { tracks, currentTrackId } = this.state;
+    const currentTrack = this.findTrack(currentTrackId);
+
     return (
       <div className="App">
         <header className="App-header">
           <h1>It's a player</h1>
         </header>
         <ListHeader title="Playlist:"/>
-        <Tracks tracks={this.state.tracks} setCurrentTrackFromTracks={this.setCurrentTrackFromTracks}/>
-        <CurrentTrack currentTrack={this.findTrack(this.state.currentTrackId)}/>
+        <Tracks tracks={tracks} setCurrentTrackFromTracks={this.setCurrentTrackFromTracks}/>
+        <CurrentTrack currentTrack={currentTrack}/>
       </div>
     );
   }
