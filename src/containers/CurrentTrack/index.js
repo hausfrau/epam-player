@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 
 class CurrentTrack extends Component {
   render() {
+    const { name, duration} = this.props.currentTrack;
+
     return (
       <div>
-        Current track is {this.props.currentTrack.name} {this.props.currentTrack.duration}
+        Current track is {name}  {duration}
       </div>
     )
   }

@@ -44,8 +44,9 @@ class App extends Component {
   findTrack = (id) => console.log(id) || this.state.tracks.find(track => track.id === id);
 
   render() {
-    const  { tracks, currentTrackId } = this.state;
+    const {tracks, currentTrackId} = this.state;
     const currentTrack = this.findTrack(currentTrackId);
+    const setCurrentTrackFromTracks = this.setCurrentTrackFromTracks;
 
     return (
       <div className="App">
@@ -53,7 +54,7 @@ class App extends Component {
           <h1>It's a player</h1>
         </header>
         <ListHeader title="Playlist:"/>
-        <Tracks tracks={tracks} setCurrentTrackFromTracks={this.setCurrentTrackFromTracks}/>
+        <Tracks tracks={tracks} setCurrentTrackFromTracks={setCurrentTrackFromTracks}/>
         <CurrentTrack currentTrack={currentTrack}/>
       </div>
     );
