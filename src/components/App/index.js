@@ -34,7 +34,7 @@ class App extends Component {
         duration: "03.48"
       },
     ],
-    currentTrackId: 5
+    currentTrackId: 0
   }
 
   setCurrentTrackFromTracks = (currentTrackId) => {
@@ -45,7 +45,11 @@ class App extends Component {
 
   render() {
     const {tracks, currentTrackId} = this.state;
-    const currentTrack = this.findTrack(currentTrackId);
+    const currentTrack = this.findTrack(currentTrackId) || {
+      id: 0,
+      name: "",
+      duration: ""
+    };
     const setCurrentTrackFromTracks = this.setCurrentTrackFromTracks;
 
     return (
